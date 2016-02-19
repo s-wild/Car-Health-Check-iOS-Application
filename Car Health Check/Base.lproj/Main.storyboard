@@ -127,12 +127,49 @@
                                     <outlet property="delegate" destination="W9c-Fz-4Tq" id="xli-jU-6Wd"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mk-MP-D90">
+                                <rect key="frame" x="187" y="449" width="227" height="47"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="227" id="xJq-41-p1f"/>
+                                </constraints>
+                                <state key="normal" title="Go!">
+                                    <color key="titleColor" red="0.99195677042007446" green="0.99622899293899536" blue="0.99192315340042114" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="S4R-Ja-viH" kind="show" id="RqH-KT-pvE"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select A User:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vS-Dj-8Xf">
+                                <rect key="frame" x="234" y="160" width="132" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="132" id="1MF-w9-46S"/>
+                                    <constraint firstAttribute="height" constant="24" id="9E4-DV-LkO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="yTa-iE-yIB">
+                                <rect key="frame" x="269" y="90" width="62" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="3Sb-Pf-14h"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QSM-42-neH" firstAttribute="centerY" secondItem="2j4-P1-D0w" secondAttribute="centerY" id="GVl-GK-MZD"/>
-                            <constraint firstItem="QSM-42-neH" firstAttribute="leading" secondItem="2j4-P1-D0w" secondAttribute="leadingMargin" constant="99" id="cNT-4h-CA6"/>
-                            <constraint firstItem="QSM-42-neH" firstAttribute="centerX" secondItem="2j4-P1-D0w" secondAttribute="centerX" id="jN6-4v-fNT"/>
+                            <constraint firstItem="5mk-MP-D90" firstAttribute="centerX" secondItem="2j4-P1-D0w" secondAttribute="centerX" id="2qK-t2-gxz"/>
+                            <constraint firstItem="yTa-iE-yIB" firstAttribute="top" secondItem="rb2-Tq-oam" secondAttribute="bottom" constant="70" id="F5R-AQ-54I"/>
+                            <constraint firstItem="5mk-MP-D90" firstAttribute="top" secondItem="QSM-42-neH" secondAttribute="bottom" constant="41" id="HKu-op-fOl"/>
+                            <constraint firstItem="QSM-42-neH" firstAttribute="top" secondItem="5vS-Dj-8Xf" secondAttribute="bottom" constant="8" symbolic="YES" id="Jie-G7-KZP"/>
+                            <constraint firstItem="5vS-Dj-8Xf" firstAttribute="top" secondItem="yTa-iE-yIB" secondAttribute="bottom" constant="8" symbolic="YES" id="MFf-8J-lY0"/>
+                            <constraint firstItem="5vS-Dj-8Xf" firstAttribute="centerX" secondItem="QSM-42-neH" secondAttribute="centerX" id="aQC-IW-hef"/>
+                            <constraint firstItem="QSM-42-neH" firstAttribute="leading" secondItem="2j4-P1-D0w" secondAttribute="leadingMargin" constant="99" id="bys-TN-MGn"/>
+                            <constraint firstItem="5vS-Dj-8Xf" firstAttribute="centerX" secondItem="yTa-iE-yIB" secondAttribute="centerX" id="hv0-aN-gcK"/>
+                            <constraint firstItem="QSM-42-neH" firstAttribute="centerX" secondItem="5mk-MP-D90" secondAttribute="centerX" id="jkE-Vf-hCB"/>
+                            <constraint firstItem="wDL-QN-WeW" firstAttribute="top" secondItem="5mk-MP-D90" secondAttribute="bottom" constant="104" id="kws-xW-WwM"/>
+                            <constraint firstItem="QSM-42-neH" firstAttribute="centerY" secondItem="2j4-P1-D0w" secondAttribute="centerY" id="tHh-hR-XZ2"/>
                         </constraints>
                     </view>
                     <connections>
@@ -141,17 +178,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZ9-XC-brq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="-295"/>
+            <point key="canvasLocation" x="1590" y="-309"/>
         </scene>
         <!--Title-->
         <scene sceneID="F8f-12-vvt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sfq-eX-avV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="AOR-Fz-D7Q">
-                    <connections>
-                        <action selector="swipeGesture:" destination="T0H-Ik-XY9" id="Q7W-7y-7E3"/>
-                    </connections>
-                </screenEdgePanGestureRecognizer>
                 <viewController id="T0H-Ik-XY9" customClass="CarPartsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D7j-Rm-yzv"/>
@@ -192,11 +223,21 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Om2-BT-iJb"/>
                     </navigationItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfq-eX-avV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="AOR-Fz-D7Q">
+                    <connections>
+                        <action selector="swipeGesture:" destination="T0H-Ik-XY9" id="Q7W-7y-7E3"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3023" y="-295"/>
         </scene>
     </scenes>
     <resources>
         <image name="cap_plan.png" width="1021" height="1723"/>
+        <image name="user_icon.png" width="104" height="104"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="RqH-KT-pvE"/>
+    </inferredMetricsTieBreakers>
 </document>

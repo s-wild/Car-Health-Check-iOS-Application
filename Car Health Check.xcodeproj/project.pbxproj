@@ -10,6 +10,7 @@
 		71BE43F4A09D908CD6C1EE91 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314289C137A7FCCDD8B10228 /* Pods.framework */; };
 		813E034F1C763A7B00D8D4D3 /* UserSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813E034E1C763A7B00D8D4D3 /* UserSelectViewController.swift */; };
 		813E03511C7640A300D8D4D3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 813E03501C7640A300D8D4D3 /* Podfile */; };
+		813E03591C77753700D8D4D3 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 813E03581C77753700D8D4D3 /* user_icon.png */; };
 		8192E6951C6D08FE007C3498 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192E6941C6D08FE007C3498 /* AppDelegate.swift */; };
 		8192E6971C6D08FE007C3498 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192E6961C6D08FE007C3498 /* RootViewController.swift */; };
 		8192E6991C6D08FE007C3498 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192E6981C6D08FE007C3498 /* DataViewController.swift */; };
@@ -44,6 +45,7 @@
 		314289C137A7FCCDD8B10228 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		813E034E1C763A7B00D8D4D3 /* UserSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectViewController.swift; sourceTree = "<group>"; };
 		813E03501C7640A300D8D4D3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		813E03581C77753700D8D4D3 /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_icon.png; path = ../../Desktop/user_icon.png; sourceTree = "<group>"; };
 		8192E6911C6D08FE007C3498 /* Car Health Check.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Car Health Check.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8192E6941C6D08FE007C3498 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8192E6961C6D08FE007C3498 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				813E03501C7640A300D8D4D3 /* Podfile */,
+				813E03581C77753700D8D4D3 /* user_icon.png */,
 				8192E6C61C6D0F46007C3498 /* cap_plan.png */,
 				8192E6931C6D08FE007C3498 /* Car Health Check */,
 				8192E6AC1C6D08FE007C3498 /* Car Health CheckTests */,
@@ -274,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813E03591C77753700D8D4D3 /* user_icon.png in Resources */,
 				813E03511C7640A300D8D4D3 /* Podfile in Resources */,
 				8192E6A31C6D08FE007C3498 /* LaunchScreen.storyboard in Resources */,
 				8192E6C71C6D0F46007C3498 /* cap_plan.png in Resources */,
