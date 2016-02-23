@@ -9,7 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Car Health Check.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -23,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F463AABF1796774755F977C71666B1DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFE5CE9FF2032E51FCBADE3CE42A2703</key>
 		<dict>
 			<key>primary</key>
 			<true/>

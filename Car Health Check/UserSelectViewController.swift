@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 
 class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -15,6 +17,7 @@ class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerV
     var users = ["User 1","User 2","User 3","User 1","User 2","User 3"]
     
     override func viewDidLoad() {
+        print("test")
         // Connect data:
         self.pickerUserSelect.delegate = self
         self.pickerUserSelect.dataSource = self
@@ -22,6 +25,17 @@ class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerV
         super.viewDidLoad()
         // Do any additionalsetup after loadin
         //the view, typically from a nib.
+        
+        let postEndpoint: String = "http://simon-wild.co.uk/data/car_health_check.json"
+        Alamofire.request(.GET, postEndpoint)
+            .responseJSON { response in
+                if let JSON = response.result.value {
+                    //let users = JSON["users"]
+                    print(JSON)
+                   // let dataArray = users as! NSArray;
+                }
+            }
+        
     }
     
     // The number of columns of data
