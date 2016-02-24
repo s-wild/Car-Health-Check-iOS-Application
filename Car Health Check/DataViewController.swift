@@ -34,10 +34,12 @@ class DataViewController: UIViewController {
         
         // Get User ID
         let userID = NSUserDefaults.standardUserDefaults().objectForKey("User_ID") as! Int;
-        print(userID);
+        //print(userID);
         
         var car_id:Int!;
         var carObj:AnyObject;
+        
+        //print(Helper.users);
         
         // Get Car ID
         for user:AnyObject in Helper.users {
@@ -49,13 +51,58 @@ class DataViewController: UIViewController {
         
         // Get car object
         for car:AnyObject in Helper.cars {
-            print(car["id"]);
+            //print(car["id"]);
             let id = car["id"] as! Int;
             if (id == car_id) {
                 carObj = car;
-                print(carObj);
+//                print(carObj);
+                // Get Front Brake.
+                let parts = carObj["parts"] as! [AnyObject]!;
+//                print(parts);
+                
+                var shock_absorber:AnyObject?;
+                var front_left_brake:AnyObject?;
+                var front_right_brake:AnyObject?;
+                var cata_converter:AnyObject?;
+
+                
+                for p:AnyObject in parts {
+                    let name = p["name"] as! String;
+                    if (name == "shock_absorber") {
+                        shock_absorber = p;
+                    }
+                    else if(name == "front_brake_left") {
+                        front_left_brake = p;
+                    }
+                    else if(name == "front_brake_right") {
+                        front_right_brake = p;
+                    } else {
+                        cata_converter = p;
+                    }
+                    
+                  //  print("---PARTS START");
+                    
+//                    print(front_left_brake);
+//                    print(front_right_brake);
+//                    print(cata_converter);
+                   // print("PARTS END---");
+                    
+                }
+                let shock_absorber_health = shock_absorber!["estimated_health_percentage"];
+                print("estimated_health_percentage");
+                print(shock_absorber_health);
+                
+                
+                let front_brake_left = front_left_brake!["front_brake_left"];
+                print("front_brake_left");
+                print(front_left_brake!["estimated_health_percentage"]);
+                
+                let front_brake_right = front_left_brake!["front_brake_right"];
+                print("front_brake_right");
+                print(front_right_brake!["estimated_health_percentage"]);
             }
         }
+        
         
         
     }
