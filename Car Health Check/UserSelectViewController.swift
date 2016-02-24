@@ -40,26 +40,32 @@ class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerV
         // Do any additionalsetup after loadin
         //the view, typically from a nib.
         
-        
         let postEndpoint: String = "http://simon-wild.co.uk/data/car_health_check2.json"
-        Alamofire.request(.GET, postEndpoint, encoding:.JSON)
-        .responseJSON { response in
-                if let json = response.result.value {
-                    let users2 = json["users"] as! [AnyObject]!;
-                    //print(users);
-                    
-                    for obj:AnyObject in users2 {
-                        print(obj);
-                        print(obj["first_name"]);
-                        let name = obj["first_name"] as! String;
-                        let id = obj["id"] as! Int;
-                        let car_id = obj["car_id"] as! Int;
-                        self.users.append(User(name: name, id: id, car_id: car_id));
-                        self.pickerUserSelect.reloadAllComponents();
-                    }
-                }
-            }
         
+        // Setting global JSON
+        Alamofire.request(.GET, postEndpoint, encoding:.JSON)
+            .responseJSON { response in
+                if let json = response.result.value {
+                    let users = json["users"] as! [AnyObject];
+                    let cars = json["cars"] as! [AnyObject];
+                    Helper.users = users;
+                    Helper.cars = cars;
+                    
+                    self.showUsers();
+                }
+        }
+        
+        
+    }
+    
+    func showUsers() {
+        for obj:AnyObject in Helper.users {
+            let name = obj["first_name"] as! String;
+            let id = obj["id"] as! Int;
+            let car_id = obj["car_id"] as! Int;
+            self.users.append(User(name: name, id: id, car_id: car_id));
+            self.pickerUserSelect.reloadAllComponents();
+        }
     }
     
     // The number of columns of data
