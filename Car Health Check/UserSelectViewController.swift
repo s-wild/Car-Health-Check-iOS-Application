@@ -14,10 +14,24 @@ import SwiftyJSON
 class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var pickerUserSelect: UIPickerView!
-    var users = ["User 1","User 2","User 3","User 1","User 2","User 3"]
+    //var users = [String]();
+    var users = [User]();
+    
+    class User {
+        var name:String!;
+        var id:Int!;
+        var car_id:Int!; 
+        
+        // Constructor
+        init(name: String, id: Int, car_id: Int) {
+            self.name = name
+            self.id = id
+            self.car_id = car_id
+        }
+        
+    }
     
     override func viewDidLoad() {
-        print("test")
         // Connect data:
         self.pickerUserSelect.delegate = self
         self.pickerUserSelect.dataSource = self
@@ -26,13 +40,23 @@ class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerV
         // Do any additionalsetup after loadin
         //the view, typically from a nib.
         
-        let postEndpoint: String = "http://simon-wild.co.uk/data/car_health_check.json"
-        Alamofire.request(.GET, postEndpoint)
-            .responseJSON { response in
-                if let JSON = response.result.value {
-                    //let users = JSON["users"]
-                    print(JSON)
-                   // let dataArray = users as! NSArray;
+        
+        let postEndpoint: String = "http://simon-wild.co.uk/data/car_health_check2.json"
+        Alamofire.request(.GET, postEndpoint, encoding:.JSON)
+        .responseJSON { response in
+                if let json = response.result.value {
+                    let users2 = json["users"] as! [AnyObject]!;
+                    //print(users);
+                    
+                    for obj:AnyObject in users2 {
+                        print(obj);
+                        print(obj["first_name"]);
+                        let name = obj["first_name"] as! String;
+                        let id = obj["id"] as! Int;
+                        let car_id = obj["car_id"] as! Int;
+                        self.users.append(User(name: name, id: id, car_id: car_id));
+                        self.pickerUserSelect.reloadAllComponents();
+                    }
                 }
             }
         
@@ -51,8 +75,20 @@ class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerV
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return users[row]
+        
+        let name = users[row].name;
+        return name;
     }
+    
+    
+    
+    @IBAction func Go_Click(sender: AnyObject) {
+        let selIndex = pickerUserSelect.selectedRowInComponent(0);
+        let userID = users[selIndex].id;
+        NSUserDefaults.standardUserDefaults().setObject(userID, forKey: "User_ID");
+    }
+    
+    
     
 }
 

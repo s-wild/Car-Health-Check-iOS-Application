@@ -26,6 +26,13 @@ class DataViewController: UIViewController {
         
         updateTimer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: "callFunction", userInfo: nil, repeats: true)
         
+        
+        // Get User ID
+        let userID = NSUserDefaults.standardUserDefaults().objectForKey("User_ID") as! Int;
+        print(userID);
+        
+        // setUIAppearance();
+        
     }
 
     override func didReceiveMemoryWarning() {
