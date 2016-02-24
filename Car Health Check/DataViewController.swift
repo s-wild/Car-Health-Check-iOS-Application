@@ -88,18 +88,21 @@ class DataViewController: UIViewController {
                    // print("PARTS END---");
                     
                 }
-                let shock_absorber_health = shock_absorber!["estimated_health_percentage"];
-                print("estimated_health_percentage");
-                print(shock_absorber_health);
+                let shock_absorber_health = shock_absorber!["estimated_health_percentage"] as! Int;
+                toggleShockAbsorber(shock_absorber_health);
                 
                 
-                let front_brake_left = front_left_brake!["front_brake_left"];
+                let front_brake_left_health = front_left_brake!["estimated_health_percentage"];
                 print("front_brake_left");
-                print(front_left_brake!["estimated_health_percentage"]);
+                print(front_brake_left_health);
                 
-                let front_brake_right = front_left_brake!["front_brake_right"];
+                let front_brake_right_health = front_right_brake!["estimated_health_percentage"];
                 print("front_brake_right");
-                print(front_right_brake!["estimated_health_percentage"]);
+                print(front_brake_right_health);
+                
+                let catalytic_converter_health = cata_converter!["estimated_health_percentage"];
+                print("catalytic_converter_health");
+                print(catalytic_converter_health);
             }
         }
         
@@ -137,6 +140,32 @@ class DataViewController: UIViewController {
             
         })
     }
+    
+    @IBOutlet weak var shockAbsorberButton: UIButton!
+    // Set view for shock absorber
+    func toggleShockAbsorber (shock_absorber_health:Int) {
+        if (shock_absorber_health >= 70) {
+            shockAbsorberButton.hidden = true;
+            
+        } else if (shock_absorber_health > 50 && shock_absorber_health <= 70) {
+            shockAbsorberButton.hidden = false;
+            shockAbsorberButton.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (shock_absorber_health < 50) {
+            shockAbsorberButton.hidden = false;
+            shockAbsorberButton.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+        // Healthly > 70
+            // Don't show anything, it's good
+        
+        // Ok >= 50
+            // Set yellow button,
+        
+        // Bad health < 50
+            // Set red button and flash!
+    }
+    
+    // Set
     
 
 }

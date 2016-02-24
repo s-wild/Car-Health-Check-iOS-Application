@@ -30,18 +30,12 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cap_plan.png" translatesAutoresizingMaskIntoConstraints="NO" id="IHm-cz-GJR">
                                         <rect key="frame" x="30" y="63" width="255" height="431"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-lX-6d3">
-                                        <rect key="frame" x="200" y="415" width="27" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.13518099380000001" blue="0.1919406619" alpha="0.80141843970000004" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEX-Jy-d9c">
+                                        <rect key="frame" x="210" y="123" width="27" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.13518099379726889" blue="0.19194066193566039" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="frontBrake_Click:" destination="S4R-Ja-viH" eventType="touchUpInside" id="K2Q-oG-LOn"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tds-iM-4bz">
-                                        <rect key="frame" x="235" y="133" width="27" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.13518099380000001" blue="0.1919406619" alpha="0.80141843970000004" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="frontBrake_Click:" destination="S4R-Ja-viH" eventType="touchUpInside" id="8kH-0B-4yI"/>
+                                            <action selector="frontBrake_Click:" destination="S4R-Ja-viH" eventType="touchUpInside" id="8sC-Ct-Gm3"/>
+                                            <segue destination="T0H-Ik-XY9" kind="presentation" modalTransitionStyle="crossDissolve" id="qnW-zU-AeC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Dg-Uy-9Iz">
@@ -60,14 +54,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEX-Jy-d9c">
-                                        <rect key="frame" x="207" y="125" width="27" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.13518099379726889" blue="0.19194066193566039" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <action selector="frontBrake_Click:" destination="S4R-Ja-viH" eventType="touchUpInside" id="8sC-Ct-Gm3"/>
-                                            <segue destination="T0H-Ik-XY9" kind="presentation" modalTransitionStyle="crossDissolve" id="qnW-zU-AeC"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -77,6 +63,7 @@
                     <connections>
                         <outlet property="dataLabel" destination="cF2-Le-7mQ" id="3EH-BK-JV6"/>
                         <outlet property="frontBrake" destination="UEX-Jy-d9c" id="hHP-Aw-8Lt"/>
+                        <outlet property="shockAbsorberButton" destination="UEX-Jy-d9c" id="HxL-V6-brz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GmD-Rr-ZGN" sceneMemberID="firstResponder"/>
