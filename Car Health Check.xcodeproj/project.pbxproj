@@ -22,6 +22,7 @@
 		8192E6B91C6D08FE007C3498 /* Car_Health_CheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8192E6B81C6D08FE007C3498 /* Car_Health_CheckUITests.swift */; };
 		8192E6C71C6D0F46007C3498 /* cap_plan.png in Resources */ = {isa = PBXBuildFile; fileRef = 8192E6C61C6D0F46007C3498 /* cap_plan.png */; };
 		81C96B5C1C7BDE3500B3238F /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C96B5B1C7BDE3500B3238F /* user_icon.png */; };
+		81E07D091C7DDF4600390454 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E07D081C7DDF4600390454 /* Helper.swift */; };
 		81E1B17A1C7387D500D0270A /* CarPartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E1B1791C7387D500D0270A /* CarPartsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		8192E6BA1C6D08FE007C3498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8192E6C61C6D0F46007C3498 /* cap_plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cap_plan.png; path = "Car Health Check/Assets.xcassets/cap_plan.png"; sourceTree = "<group>"; };
 		81C96B5B1C7BDE3500B3238F /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_icon.png; path = "Car Health Check/Assets.xcassets/user_icon.png"; sourceTree = "<group>"; };
+		81E07D081C7DDF4600390454 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		81E1B1791C7387D500D0270A /* CarPartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarPartsViewController.swift; sourceTree = "<group>"; };
 		AD5926C8296CBBFF33734B46 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CE6376C336F79A7C1A98FBCC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				8192E6A41C6D08FE007C3498 /* Info.plist */,
 				81E1B1791C7387D500D0270A /* CarPartsViewController.swift */,
 				813E034E1C763A7B00D8D4D3 /* UserSelectViewController.swift */,
+				81E07D081C7DDF4600390454 /* Helper.swift */,
 			);
 			path = "Car Health Check";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8192E6971C6D08FE007C3498 /* RootViewController.swift in Sources */,
+				81E07D091C7DDF4600390454 /* Helper.swift in Sources */,
 				8192E69B1C6D08FE007C3498 /* ModelController.swift in Sources */,
 				8192E6991C6D08FE007C3498 /* DataViewController.swift in Sources */,
 				813E034F1C763A7B00D8D4D3 /* UserSelectViewController.swift in Sources */,
