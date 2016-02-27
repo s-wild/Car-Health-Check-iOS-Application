@@ -22,10 +22,12 @@ class CarPartsViewController:UIViewController, UITableViewDelegate, UITableViewD
     class Details{
         var name:String!;
         var value:String!;
+        var indent_value:Int!;
         
-        init(name:String, value:String) {
+        init(name:String, value:String, indent_value:Int) {
             self.name = name;
             self.value = value;
+            self.indent_value = indent_value;
         }
     }
     
@@ -65,11 +67,20 @@ class CarPartsViewController:UIViewController, UITableViewDelegate, UITableViewD
                 
                 // Set Title Name (Car + Brand)
                 let car_model = carObj["model"] as! String!;
+                let car_model_capitalized = car_model.capitalizedString;
                 let car_brand = carObj["brand"] as! String!;
+                let car_brand_capitalized = car_brand.capitalizedString;
                 let car_year = carObj["year"] as! String!;
+                let last_mot = carObj["last_mot"] as! String!;
+                let mot_due = carObj["mot_due"] as! String!;
+                let last_service = carObj["last_service"] as! String!;
+                
+                // Get parts
+                //let fl_brake = carObj["parts"][0]
+                
                 
                // let car_parts = carObj["parts"] as! [AnyObject]!;
-                self.carName.text = car_brand + " " + car_model;
+                self.carName.text = car_model_capitalized + " " + car_brand_capitalized;
                 
                 // Add rows to table.
                 //let car_year = carObj["year"] as! String!;
@@ -78,12 +89,18 @@ class CarPartsViewController:UIViewController, UITableViewDelegate, UITableViewD
                 print(car_brand);
                 // Create objects
                 carDetails = [];
-                carDetails.append(Details(name: "Model", value: car_model));
-                carDetails.append(Details(name: "Brand", value: car_brand));
-                carDetails.append(Details(name: "Year", value: car_year));
+                carDetails.append(Details(name: "Model", value: car_model_capitalized, indent_value: 0));
+                carDetails.append(Details(name: "Brand", value: car_brand_capitalized, indent_value: 0));
+                carDetails.append(Details(name: "Year", value: car_year, indent_value: 0));
+                carDetails.append(Details(name: "Last MOT", value: last_mot, indent_value: 0));
+                carDetails.append(Details(name: "MOT Due", value: mot_due, indent_value: 0));
+                carDetails.append(Details(name: "Last Service", value: last_service, indent_value: 0));
+                carDetails.append(Details(name: "Parts", value: "", indent_value: 0));
+                appendDetailsForParts(carObj["parts"] as! [AnyObject]);
                 
             }
         }
+        
 
         
         //print(userID);
@@ -91,6 +108,28 @@ class CarPartsViewController:UIViewController, UITableViewDelegate, UITableViewD
         // Do any additionalsetup after loadin
         //the view, typically from a nib.
         
+    }
+    
+    func appendDetailsForParts(partsObj:[AnyObject]) {
+        for part:AnyObject in partsObj {
+            let name = part["name"] as! String;
+            let nameFormatted = name.stringByReplacingOccurrencesOfString("_", withString: " ", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            let nameFormattedCapital = nameFormatted.capitalizedString;
+            let brand = part["brand"] as! String;
+            let age = part["age"] as! String;
+            let miles_used = part["miles_used"] as! String;
+            let status = part["status"] as! String;
+            let estimated_health_percentage_int = part["estimated_health_percentage"] as! Int;
+            let estimated_health_percentage_string = String(estimated_health_percentage_int);
+            
+            // Append details to CarDetails class.
+            carDetails.append(Details(name: "DO NOT SHOW", value: nameFormattedCapital, indent_value: 1));
+            carDetails.append(Details(name: "Brand", value: brand, indent_value: 2));
+            carDetails.append(Details(name: "Age", value: age, indent_value: 2));
+            carDetails.append(Details(name: "Miles Used", value: miles_used, indent_value: 2));
+            carDetails.append(Details(name: "Status", value: status, indent_value: 2));
+            carDetails.append(Details(name: "Est Health", value: estimated_health_percentage_string, indent_value: 2));
+        }
     }
     
     
@@ -103,8 +142,25 @@ class CarPartsViewController:UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("customCellLabel", forIndexPath: indexPath);
         let detail = carDetails[indexPath.item];
-        let text = "\(detail.name) \(": ") \(detail.value)";
-        //cell.textLabel?.text = carDetails[indexPath.item];
+        // print(detail.value!);
+        var text = "\(detail.name) \(": ") \(detail.value!)";
+        
+        if(detail.name == "DO NOT SHOW") {
+            text = "\(detail.value!)";
+        }
+        if (detail.indent_value == 1) {
+            cell.indentationLevel = 1;
+            cell.indentationWidth = 5.0;
+        }
+        else if (detail.indent_value == 2) {
+            cell.indentationLevel = 2;
+            cell.indentationWidth = 9.0;
+        }
+        else {
+            cell.indentationLevel = 0;
+            cell.indentationWidth = 0;
+        }
+        
         cell.textLabel?.text = text;
 
         return cell;
