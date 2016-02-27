@@ -40,7 +40,7 @@ class UserSelectViewController:UIViewController, UIPickerViewDelegate, UIPickerV
         // Do any additionalsetup after loadin
         //the view, typically from a nib.
         
-        let postEndpoint: String = "http://simon-wild.co.uk/data/car_health_check3.json"
+        let postEndpoint: String = "http://simon-wild.co.uk/data/car_health_check5.json"
         
         // Setting global JSON
         Alamofire.request(.GET, postEndpoint, encoding:.JSON)

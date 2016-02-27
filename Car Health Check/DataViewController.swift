@@ -73,11 +73,19 @@ class DataViewController: UIViewController {
                 
                 // Shock Absorbers
                 var shock_absorber:AnyObject?;
+                var rear_shock_absorber:AnyObject?;
                 
                 // Brakes
                 var front_left_brake:AnyObject?;
                 var front_right_brake:AnyObject?;
                 var rear_left_brake:AnyObject?;
+                var rear_right_brake:AnyObject?;
+                
+                // Lights
+                var front_right_light:AnyObject?;
+                var front_left_light:AnyObject?;
+                var rear_left_light:AnyObject?;
+                var rear_right_light:AnyObject?;
                 
                 var cata_converter:AnyObject?;
  
@@ -93,18 +101,41 @@ class DataViewController: UIViewController {
                     }
                     else if(name == "front_brake_right") {
                         front_right_brake = p;
-                    }
+                    } 
                     else if(name == "rear_brake_left") {
                         rear_left_brake = p;
                     }
-                    else {
+                    else if(name == "rear_brake_right") {
+                        rear_right_brake = p;
+                    }
+                    else if(name == "front_right_light") {
+                        front_right_light = p;
+                    }
+                    else if(name == "front_left_light") {
+                        front_left_light = p;
+                    }
+                    else if(name == "rear_left_light") {
+                        rear_left_light = p;
+                    }
+                    else if(name == "rear_right_light") {
+                        rear_right_light = p;
+                    }
+                    else if(name == "rear_shock_absorber") {
+                        rear_shock_absorber = p;
+                    }
+                    else if(name == "catalytic_converter") {
                         cata_converter = p;
                     }
                 }
+                
+                // Set shock absorber health values.
                 let shock_absorber_health = shock_absorber!["estimated_health_percentage"] as! Int;
                 toggleShockAbsorber(shock_absorber_health);
                 
+                let rear_shock_absorber_health = rear_shock_absorber!["estimated_health_percentage"] as! Int;
+                toggleRearShockAbsorber(rear_shock_absorber_health);
                 
+                // Set brake values.
                 let front_brake_left_health = front_left_brake!["estimated_health_percentage"] as! Int;
                 toggleFrontLeftBrake (front_brake_left_health);
                 print("front_brake_left");
@@ -116,11 +147,39 @@ class DataViewController: UIViewController {
                 print(front_brake_right_health);
                 
                 let rear_brake_left_health = rear_left_brake!["estimated_health_percentage"] as! Int;
-                toggleFrontRightBrake(front_brake_right_health);
-                print("front_brake_right");
-                print(front_brake_right_health);
+                toggleRearLeftBrake(front_brake_right_health);
+                print("rear_brake_left_health");
+                print(rear_brake_left_health);
                 
-                let catalytic_converter_health = cata_converter!["estimated_health_percentage"];
+                let rear_brake_right_health = rear_right_brake!["estimated_health_percentage"] as! Int;
+                toggleRearRightBrake(rear_brake_right_health);
+                print("rear_brake_right_health");
+                print(rear_brake_right_health);
+                
+                // Lights value.
+                let front_light_right_health = front_right_light!["estimated_health_percentage"] as! Int;
+                toggleFrontRightLight(front_light_right_health);
+                print("front_light_right_health");
+                print(front_light_right_health);
+                
+                let front_light_left_health = front_left_light!["estimated_health_percentage"] as! Int;
+                toggleFrontLeftLight(front_light_left_health);
+                print("front_light_left_health");
+                print(front_light_left_health);
+                
+                let rear_light_left_health = rear_left_light!["estimated_health_percentage"] as! Int;
+                toggleRearLeftLight(rear_light_left_health);
+                print("rear_light_left_health");
+                print(rear_light_left_health);
+                
+                let rear_light_right_health = rear_right_light!["estimated_health_percentage"] as! Int;
+                toggleRearRightLight(rear_light_right_health);
+                print("rear_light_right_health");
+                print(rear_light_right_health);
+                
+                // Catalytic Converter.
+                let catalytic_converter_health = cata_converter!["estimated_health_percentage"] as! Int;
+                toggleCataConverter(catalytic_converter_health);
                 print("catalytic_converter_health");
                 print(catalytic_converter_health);
             }
@@ -173,7 +232,6 @@ class DataViewController: UIViewController {
     func toggleShockAbsorber (shock_absorber_health:Int) {
         if (shock_absorber_health >= 70) {
             shockAbsorberButton.hidden = true;
-            
         } else if (shock_absorber_health > 50 && shock_absorber_health <= 70) {
             shockAbsorberButton.hidden = false;
             shockAbsorberButton.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
@@ -182,15 +240,24 @@ class DataViewController: UIViewController {
             shockAbsorberButton.hidden = false;
             shockAbsorberButton.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
         }
-        // Healthly > 70
-            // Don't show anything, it's good
-        
-        // Ok >= 50
-            // Set yellow button,
-        
-        // Bad health < 50
-            // Set red button and flash!
     }
+    
+    // Set view for rear shock absorber
+    func toggleRearShockAbsorber (rear_shock_absorber_health:Int) {
+        if (rear_shock_absorber_health >= 70) {
+            rearShockAbsorber.hidden = true;
+            
+        } else if (rear_shock_absorber_health > 50 && rear_shock_absorber_health <= 70) {
+            rearShockAbsorber.hidden = false;
+            rearShockAbsorber.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (rear_shock_absorber_health < 50) {
+            rearShockAbsorber.hidden = false;
+            rearShockAbsorber.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    
+    // Check Right Brake Values.
     func toggleFrontRightBrake(front_brake_right_health:Int) {
         if (front_brake_right_health >= 70) {
             frontRightBrake.hidden = true;
@@ -216,6 +283,107 @@ class DataViewController: UIViewController {
         } else if (front_brake_left_health < 50) {
             frontLeftBrake.hidden = false;
             frontLeftBrake.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    // Rear Left Brake
+    func toggleRearLeftBrake(rear_brake_left_health:Int) {
+        if (rear_brake_left_health >= 70) {
+            rearLeftBrake.hidden = true;
+            
+        } else if (rear_brake_left_health > 50 && rear_brake_left_health <= 70) {
+            rearLeftBrake.hidden = false;
+            rearLeftBrake.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (rear_brake_left_health < 50) {
+            rearLeftBrake.hidden = false;
+            rearLeftBrake.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    // Rear Right Brake
+    func toggleRearRightBrake(rear_brake_right_health:Int) {
+        if (rear_brake_right_health >= 70) {
+            rearRightBrake.hidden = true;
+            
+        } else if (rear_brake_right_health > 50 && rear_brake_right_health <= 70) {
+            rearRightBrake.hidden = false;
+            rearRightBrake.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (rear_brake_right_health < 50) {
+            rearRightBrake.hidden = false;
+            rearRightBrake.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    // Front Right Light
+    func toggleFrontRightLight(rear_brake_right_health:Int) {
+        if (rear_brake_right_health >= 70) {
+            frontRightLight.hidden = true;
+            
+        } else if (rear_brake_right_health > 50 && rear_brake_right_health <= 70) {
+            frontRightLight.hidden = false;
+            frontRightLight.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (rear_brake_right_health < 50) {
+            frontRightLight.hidden = false;
+            frontRightLight.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    // Front Left Light
+    func toggleFrontLeftLight(front_light_left_health:Int) {
+        if (front_light_left_health >= 70) {
+            frontLeftLight.hidden = true;
+            
+        } else if (front_light_left_health > 50 && front_light_left_health <= 70) {
+            frontLeftLight.hidden = false;
+            frontLeftLight.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (front_light_left_health < 50) {
+            frontLeftLight.hidden = false;
+            frontLeftLight.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    // Rear Left Light
+    func toggleRearLeftLight(rear_light_left_health:Int) {
+        if (rear_light_left_health >= 70) {
+            rearLeftLight.hidden = true;
+            
+        } else if (rear_light_left_health > 50 && rear_light_left_health <= 70) {
+            rearLeftLight.hidden = false;
+            rearLeftLight.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (rear_light_left_health < 50) {
+            rearLeftLight.hidden = false;
+            rearLeftLight.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    // Rear Left Light
+    func toggleRearRightLight(rear_light_right_health:Int) {
+        if (rear_light_right_health >= 70) {
+            rearRightLight.hidden = true;
+            
+        } else if (rear_light_right_health > 50 && rear_light_right_health <= 70) {
+            rearRightLight.hidden = false;
+            rearRightLight.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (rear_light_right_health < 50) {
+            rearRightLight.hidden = false;
+            rearRightLight.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
+        }
+    }
+    
+    // Rear Left Light
+    func toggleCataConverter(catalytic_converter_health:Int) {
+        print("++++++++++++ZZZZZZ");
+        print(catalytic_converter_health);
+        if (catalytic_converter_health >= 70) {
+            catalyticConverter.hidden = true;
+            
+        } else if (catalytic_converter_health > 50 && catalytic_converter_health <= 70) {
+            catalyticConverter.hidden = false;
+            catalyticConverter.backgroundColor = UIColor(red: 255/255, green: 153/255, blue: 51/255, alpha: 1);
+            
+        } else if (catalytic_converter_health < 50) {
+            catalyticConverter.hidden = false;
+            catalyticConverter.backgroundColor = UIColor(red: 233, green: 0, blue: 0, alpha: 1);
         }
     }
 
