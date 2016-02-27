@@ -214,7 +214,7 @@
                                     <color key="titleColor" red="0.99195677039999997" green="0.9962289929" blue="0.99192315340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="T0H-Ik-XY9" kind="show" id="6ja-gh-cAU"/>
+                                    <segue destination="T0H-Ik-XY9" kind="show" id="a8H-wV-utb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -331,12 +331,6 @@
         <!--Title-->
         <scene sceneID="F8f-12-vvt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sfq-eX-avV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="AOR-Fz-D7Q">
-                    <connections>
-                        <action selector="swipeGesture:" destination="T0H-Ik-XY9" id="Q7W-7y-7E3"/>
-                    </connections>
-                </screenEdgePanGestureRecognizer>
                 <viewController id="T0H-Ik-XY9" customClass="CarPartsViewController" customModule="Car_Health_Check" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D7j-Rm-yzv"/>
@@ -355,6 +349,9 @@
                                 <state key="normal" title="&lt;- Back To Car Plan">
                                     <color key="titleColor" red="0.99195677042007446" green="0.99622899293899536" blue="0.99192315340042114" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="S4R-Ja-viH" kind="show" id="sWw-Bl-5fz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFO-5Y-sdF">
                                 <rect key="frame" x="0.0" y="20" width="600" height="49"/>
@@ -365,6 +362,32 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ak-HT-WZN">
+                                <rect key="frame" x="43" y="125" width="514" height="325"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="customCellLabel" id="w81-eO-yqV">
+                                        <rect key="frame" x="0.0" y="28" width="514" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w81-eO-yqV" id="74i-Ew-Opo">
+                                            <rect key="frame" x="0.0" y="0.0" width="514" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="customCellValue" id="t65-OA-Elj">
+                                        <rect key="frame" x="0.0" y="72" width="514" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t65-OA-Elj" id="fcp-MA-6qT">
+                                            <rect key="frame" x="0.0" y="0.0" width="514" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="T0H-Ik-XY9" id="Gcr-7v-JKE"/>
+                                    <outlet property="delegate" destination="T0H-Ik-XY9" id="uuu-lX-r7d"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -376,17 +399,21 @@
                             <constraint firstItem="SFO-5Y-sdF" firstAttribute="trailing" secondItem="PwU-yZ-2vT" secondAttribute="trailing" id="sSi-1t-or3"/>
                             <constraint firstAttribute="trailing" secondItem="SFO-5Y-sdF" secondAttribute="trailing" id="wPW-LJ-IQQ"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="AOR-Fz-D7Q" appends="YES" id="xTO-qU-K8A"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="hXa-9e-rHe">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Om2-BT-iJb"/>
                     </navigationItem>
                     <connections>
                         <outlet property="carName" destination="SFO-5Y-sdF" id="S4L-BH-bJS"/>
+                        <outlet property="tableView" destination="5ak-HT-WZN" id="llR-XV-0Li"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfq-eX-avV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="AOR-Fz-D7Q">
+                    <connections>
+                        <action selector="swipeGesture:" destination="T0H-Ik-XY9" id="Q7W-7y-7E3"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3096" y="-565"/>
         </scene>
@@ -395,4 +422,7 @@
         <image name="cap_plan.png" width="1021" height="1723"/>
         <image name="user_icon.png" width="104" height="104"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sWw-Bl-5fz"/>
+    </inferredMetricsTieBreakers>
 </document>
